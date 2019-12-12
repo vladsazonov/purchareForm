@@ -2,9 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="76754bde-db9e-4c13-9849-823f3801760d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/components/PaymentCheck.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/DeliveryForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DeliveryForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/PayForm.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/test.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logo.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/service.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/service.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -72,7 +80,7 @@
       <option name="presentableId" value="Default" />
       <updated>1576049215347</updated>
       <workItem from="1576049216592" duration="27569000" />
-      <workItem from="1576134899307" duration="15531000" />
+      <workItem from="1576134899307" duration="16669000" />
     </task>
     <task id="LOCAL-00001" summary="almost done">
       <created>1576149415123</created>
@@ -81,7 +89,14 @@
       <option name="project" value="LOCAL" />
       <updated>1576149415123</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="almost done1">
+      <created>1576150665295</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1576150665295</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -102,6 +117,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="almost done" />
-    <option name="LAST_COMMIT_MESSAGE" value="almost done" />
+    <MESSAGE value="almost done1" />
+    <option name="LAST_COMMIT_MESSAGE" value="almost done1" />
   </component>
 </project>

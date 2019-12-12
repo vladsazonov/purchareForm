@@ -1,7 +1,5 @@
-import React, {useState} from "react";
-import data from "./data";
+import React from "react";
 
-const countriesData = data;
 let userData = {
     name: '',
     city: '',
@@ -12,7 +10,6 @@ let userData = {
     cardNumber: '',
     cardDate: '',
     cvv: '',
-
 };
 
 export function service() {

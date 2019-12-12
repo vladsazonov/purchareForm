@@ -7,6 +7,7 @@ import {service, saveAddress} from "../service";
 import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import MaskedInput from 'react-text-mask';
+import PaymentCheck from "./PaymentCheck";
 
 const useStyles = makeStyles({
     deliveryHeader: {
@@ -332,32 +333,6 @@ export default function DeliveryForm() {
         )
     };
 
-    const payCheck = () => {
-        return (
-            <div style={{marginTop: 20}}>
-                <Typography variant="h6" style={{color: 'green'}}>Статус платежа: исполнен</Typography>
-                <Typography variant='h5'>Получатель</Typography>
-                <div className={classes.blockInfo}>
-                    <Typography>ФИО: {check.name}</Typography>
-                </div>
-                <Typography variant='h5'>Адрес</Typography>
-                <div className={classes.blockInfo}>
-                    <Typography>Город: {check.city}</Typography>
-                    <Typography>Адрес: {check.address}</Typography>
-                    <Typography>Страна: {check.country}</Typography>
-                    <Typography>Почтовый индекс: {check.zip}</Typography>
-                </div>
-                <Typography variant='h5'>Данные об оплате</Typography>
-                <div className={classes.blockInfo}>
-                    <Typography>Имя держателя карты: {check.cardName}</Typography>
-                    <Typography>Номер карты: {check.cardNumber}</Typography>
-                    <Typography>Действительна до: {check.cardDate}</Typography>
-                    <Typography>CVV: {check.cvv}</Typography>
-                </div>
-            </div>
-        )
-    };
-
     return (
         <div className={classes.formContent}>
             <Breadcrumbs separator={<NavigateNextIcon/>}>
@@ -375,7 +350,7 @@ export default function DeliveryForm() {
             </Breadcrumbs>
             {
                 step === 1 ? (deliveryForm()) : (
-                    step === 2 ? payForm() : payCheck()
+                    step === 2 ? payForm() : <PaymentCheck/>
                 )
             }
         </div>
