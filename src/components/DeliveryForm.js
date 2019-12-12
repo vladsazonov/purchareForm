@@ -227,7 +227,7 @@ export default function DeliveryForm() {
                     <Button type="submit"
                             variant="contained"
                             className={classes.continueButton}
-                            disabled={/\d/.test(state.name) || state.zip.length > 7 || state.name.length === 0 || state.city.length === 0 || state.address.length === 0 || state.zip.length === 0}>
+                            disabled={/[!@#$%^&*()_+.,|?><\d]/.test(state.name) || state.zip.length > 7 || state.name.length === 0 || state.city.length === 0 || state.address.length === 0 || state.zip.length === 0}>
                         Продолжить
                     </Button>
                 </form>
@@ -243,7 +243,7 @@ export default function DeliveryForm() {
                     <Typography className={classes.labelSize}>Имя на карте</Typography>
                     <TextField
                         fullWidth
-                        error={/\d/.test(state.cardName)}
+                        error={/[!@#$%^&*()_+.,|А-я?><\d]/.test(state.cardName)}
                         variant="outlined"
                         placeholder="Konstantin Ivanov"
                         size="small"
@@ -315,7 +315,7 @@ export default function DeliveryForm() {
                     <Button type="submit"
                             variant="contained"
                             className={classes.continueButton}
-                            disabled={/\d/.test(state.cardName) || state.cvv.length > 3 || state.cardName.length === 0 || state.cvv.length === 0 || /\D/.test(state.cvv)}>
+                            disabled={/[!@#$%^&*()_+.,|?><\dА-я]/.test(state.cardName) || state.cvv.length > 3 || state.cardName.length === 0 || state.cvv.length === 0 || /\D/.test(state.cvv)}>
                         Оплатить
                     </Button>
                 </form>

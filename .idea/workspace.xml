@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="76754bde-db9e-4c13-9849-823f3801760d" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/DeliveryForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DeliveryForm.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -72,7 +73,7 @@
       <workItem from="1576049216592" duration="27569000" />
       <workItem from="1576134899307" duration="16669000" />
       <workItem from="1576161479845" duration="3526000" />
-      <workItem from="1576166335352" duration="736000" />
+      <workItem from="1576166335352" duration="1606000" />
     </task>
     <task id="LOCAL-00001" summary="almost done">
       <created>1576149415123</created>
@@ -123,7 +124,14 @@
       <option name="project" value="LOCAL" />
       <updated>1576166421512</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Some fixes1">
+      <created>1576167659557</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1576167659557</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -148,6 +156,7 @@
     <MESSAGE value="done" />
     <MESSAGE value="Final" />
     <MESSAGE value="Some fixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Some fixes" />
+    <MESSAGE value="Some fixes1" />
+    <option name="LAST_COMMIT_MESSAGE" value="Some fixes1" />
   </component>
 </project>
