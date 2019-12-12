@@ -125,7 +125,7 @@ export default function DeliveryForm() {
     };
     const handleSavePay = (event) => {
         event.preventDefault();
-        if (/\d/.test(state.cardName) || state.cardName.length === 0 || state.cvv.length > 4) {
+        if (/\d/.test(state.cardName) || state.cardName.length === 0 || state.cvv.length > 3) {
             setIsOk(3)
         } else {
             setIsOk(2);
@@ -294,7 +294,7 @@ export default function DeliveryForm() {
                             <div style={{marginLeft: 30}}>
                                 <Typography className={classes.labelSize}>CVV</Typography>
                                 <TextField
-                                    error={state.cvv.length > 4}
+                                    error={state.cvv.length > 3}
                                     variant="outlined"
                                     type="password"
                                     size="small"
@@ -315,7 +315,7 @@ export default function DeliveryForm() {
                     <Button type="submit"
                             variant="contained"
                             className={classes.continueButton}
-                            disabled={/\d/.test(state.cardName) || state.cvv.length > 4 || state.cardName.length === 0 || state.cvv.length === 0}>
+                            disabled={/\d/.test(state.cardName) || state.cvv.length > 3 || state.cardName.length === 0 || state.cvv.length === 0 || /\D/.test(state.cvv)}>
                         Оплатить
                     </Button>
                 </form>
