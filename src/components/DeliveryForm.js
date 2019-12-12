@@ -1,13 +1,13 @@
 import React, {useEffect, useState} from 'react';
 import {makeStyles} from "@material-ui/styles";
 import TextField from "@material-ui/core/TextField";
-import {Typography} from "@material-ui/core";
+import {Input, Typography} from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import {service, saveAddress} from "../service";
 import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
-import MaskedInput from 'react-text-mask';
 import PaymentCheck from "./PaymentCheck";
+import InputMask from "react-input-mask";
 
 const useStyles = makeStyles({
     deliveryHeader: {
@@ -76,16 +76,45 @@ const useStyles = makeStyles({
         width: 298,
         border: '1px solid #c4c4c4',
         padding: '10.5px 10.5px',
-        color: '#a2a2a2',
+        outline: 'none',
+        color: '#000',
+        fontSize: 16,
+
+        '&:focus': {
+            boxShadow: 'inset 0 0 0 1px rgb(57, 83, 162)',
+            border: '1px solid rgb(57, 83, 162)',
+            color: '#000'
+        },
+        '&:hover': {
+            border: '1px solid #000',
+        },
+        '&::placeholder': {
+            color: 'rgb(162, 162, 162)',
+            fontSize: 14,
+        },
     },
     cardDateInput: {
         fontSize: 16,
+        borderRadius: 4,
         height: 17,
         width: 72,
-        borderRadius: 4,
         border: '1px solid #c4c4c4',
         padding: '10.5px 10.5px',
-        color: '#a2a2a2',
+        outline: 'none',
+        color: '#000',
+
+        '&:focus': {
+            boxShadow: 'inset 0 0 0 1px rgb(57, 83, 162)',
+            border: '1px solid rgb(57, 83, 162)',
+            color: '#000'
+        },
+        '&::placeholder': {
+            color: 'rgb(162, 162, 162)',
+            fontSize: 14,
+        },
+        '&:hover': {
+            border: '1px solid #000',
+        },
     },
 });
 
@@ -103,7 +132,7 @@ export default function DeliveryForm() {
         zip: '',
         cardName: '',
         cardNumber: '',
-        cardDate: '/',
+        cardDate: '',
         cvv: '',
     });
 
@@ -152,7 +181,7 @@ export default function DeliveryForm() {
                     <Typography className={classes.labelSize}>Получатель</Typography>
                     <TextField
                         fullWidth
-                        error={/[!@#$%^&*()_+.,|?><\d]/.test(state.name)}
+                        error={/[!@#$%^&*()_+~`"№;:.,/|?><[\d]/.test(state.name)}
                         variant="outlined"
                         placeholder="ФИО"
                         size="small"
@@ -162,7 +191,6 @@ export default function DeliveryForm() {
                         autoComplete="name"
                         value={state.name}
                         onChange={handleChangeData('name')}
-
                     />
                     <div style={{marginTop: 38}}>
                         <Typography className={classes.labelSize}>Адрес</Typography>
@@ -227,7 +255,7 @@ export default function DeliveryForm() {
                     <Button type="submit"
                             variant="contained"
                             className={classes.continueButton}
-                            disabled={/[!@#$%^&*()_+.,|?><\d]/.test(state.name) || state.zip.length > 7 || state.name.length === 0 || state.city.length === 0 || state.address.length === 0 || state.zip.length === 0}>
+                            disabled={/[!@#$%^&*()_+~`"№;:.,/|?>[<\d]/.test(state.name) || state.zip.length > 7 || state.name.length === 0 || state.city.length === 0 || state.address.length === 0 || state.zip.length === 0}>
                         Продолжить
                     </Button>
                 </form>
@@ -256,39 +284,30 @@ export default function DeliveryForm() {
                     />
                     <div style={{marginTop: 23}}>
                         <Typography className={classes.labelSize}>Номер карты</Typography>
-                        <MaskedInput
-                            required
-                            mask={[/\d/, /\d/, /\d/, /\d/, ' ', /\d/, /\d/, /\d/, /\d/, ' ', /\d/, /\d/, /\d/, /\d/, ' ', /\d/, /\d/, /\d/, /\d/]}
-                            fullWidth
-                            className={classes.cardNumberInput}
-                            error={/\D/.test(state.cardNumber)}
-                            variant="outlined"
-                            placeholderChar='X'
-                            size="small"
-                            showMask
-                            name="cardnumber"
-                            id="frmCCNum"
-                            autoComplete="cc-number"
-                            value={state.cardNumber}
-                            onChange={handleChangeData('cardNumber')}
+                        <InputMask mask="9999 9999 9999 9999"
+                                   maskPlaceholder={null}
+                                   required
+                                   placeholder="XXXX XXXX XXXX XXXX"
+                                   name="cardnumber"
+                                   id="frmCCNum"
+                                   autoComplete="cc-number"
+                                   className={classes.cardNumberInput}
+                                   value={state.cardNumber}
+                                   onChange={handleChangeData('cardNumber')}
                         />
                         <div className={classes.payBlock}>
                             <div>
                                 <Typography className={classes.labelSize}>Срок</Typography>
-                                <MaskedInput
-                                    mask={[/\d/, /\d/, '/', /\d/, /\d/]}
-                                    className={classes.cardDateInput}
-                                    placeholderChar='#'
-                                    variant="outlined"
-                                    placeholder="Срок"
-                                    size="small"
-                                    name="cc-exp"
-                                    id="frmCCExp"
-                                    required
-                                    autoComplete="cc-exp"
-                                    showMask
-                                    value={state.cardDate}
-                                    onChange={handleChangeData('cardDate')}
+                                <InputMask mask="99/99"
+                                           maskPlaceholder={null}
+                                           placeholder="MM / YY"
+                                           name="cc-exp"
+                                           id="frmCCExp"
+                                           required
+                                           autoComplete="cc-exp"
+                                           className={classes.cardDateInput}
+                                           value={state.cardDate}
+                                           onChange={handleChangeData('cardDate')}
                                 />
                             </div>
                             <div style={{marginLeft: 30}}>
@@ -315,7 +334,7 @@ export default function DeliveryForm() {
                     <Button type="submit"
                             variant="contained"
                             className={classes.continueButton}
-                            disabled={/[!@#$%^&*()_+.,|?><\dА-я]/.test(state.cardName) || state.cvv.length > 3 || state.cardName.length === 0 || state.cvv.length === 0 || /\D/.test(state.cvv)}>
+                            disabled={/[!@#$%^&*()_+.,|?><\dА-я]/.test(state.cardName) || state.cvv.length > 3 || state.cardName.length === 0 || state.cvv.length === 0 || /\D/.test(state.cvv) || state.cardNumber.length < 19 || state.cardDate.length < 5 || state.cardDate.length === 0}>
                         Оплатить
                     </Button>
                 </form>
