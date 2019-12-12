@@ -294,7 +294,7 @@ export default function DeliveryForm() {
                             <div style={{marginLeft: 30}}>
                                 <Typography className={classes.labelSize}>CVV</Typography>
                                 <TextField
-                                    error={state.cvv.length > 3}
+                                    error={state.cvv.length > 3 && /\D/.test(state.cvv)}
                                     variant="outlined"
                                     type="password"
                                     size="small"
