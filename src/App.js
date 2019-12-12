@@ -1,26 +1,26 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import {BrowserRouter as Router, Switch, Route,} from "react-router-dom";
+import DeliveryForm from "./components/DeliveryForm";
+import PayForm from "./components/PayForm";
+import Breadcrumbs from '@material-ui/core/Breadcrumbs';
+import Typography from '@material-ui/core/Typography';
+import Link from '@material-ui/core/Link';
+import NavigateNextIcon from '@material-ui/icons/NavigateNext';
+import Button from "@material-ui/core/Button";
+import {makeStyles} from "@material-ui/styles";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const useStyles = makeStyles({
+
+});
+
+
+export default function App() {
+    return (
+        <main className="App">
+            <section className="formArea">
+                <DeliveryForm/>
+            </section>
+        </main>
+    )
 }
-
-export default App;
