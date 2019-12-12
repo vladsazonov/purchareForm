@@ -1,18 +1,12 @@
 import React, {useEffect, useState} from 'react';
 import {makeStyles} from "@material-ui/styles";
 import TextField from "@material-ui/core/TextField";
-import FormControl from "@material-ui/core/FormControl";
 import {Typography} from "@material-ui/core";
 import Button from "@material-ui/core/Button";
-import MenuItem from '@material-ui/core/MenuItem';
 import {service, saveAddress} from "../service";
-import {useHistory} from "react-router-dom";
 import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import MaskedInput from 'react-text-mask';
-import PropTypes from 'prop-types';
-import Input from '@material-ui/core/Input';
-import FormattedInputs from './test'
 
 const useStyles = makeStyles({
     deliveryHeader: {
@@ -76,7 +70,24 @@ const useStyles = makeStyles({
         padding: '22px 40px',
     },
     blockInfo: {
-      margin: '10px 0 10px 25px'
+        margin: '10px 0 10px 25px'
+    },
+    cardNumberInput: {
+        height: 17,
+        borderRadius: 4,
+        width: 298,
+        border: '1px solid #c4c4c4',
+        padding: '10.5px 10.5px',
+        color: '#a2a2a2',
+    },
+    cardDateInput: {
+        fontSize: 16,
+        height: 17,
+        width: 72,
+        borderRadius: 4,
+        border: '1px solid #c4c4c4',
+        padding: '10.5px 10.5px',
+        color: '#a2a2a2',
     },
 });
 
@@ -110,7 +121,7 @@ export default function DeliveryForm() {
 
     const handleSaveAddress = (event) => {
         event.preventDefault();
-        if (/\d/.test(state.name) || state.zip.length > 6 || state.name.length === 0 || state.length === 0 || state.address === 0 || state.zip === 0) {
+        if (/\d/.test(state.name) || state.zip.length > 7 || state.name.length === 0 || state.length === 0 || state.address === 0 || state.zip === 0) {
             console.log('ne verno');
             setIsOk(3)
         } else {
@@ -120,7 +131,7 @@ export default function DeliveryForm() {
     };
     const handleSavePay = (event) => {
         event.preventDefault();
-        if (/\d/.test(state.cardName)  || state.cardName.length === 0 || state.cvv.length > 4) {
+        if (/\d/.test(state.cardName) || state.cardName.length === 0 || state.cvv.length > 4) {
             console.log('ne verno');
             setIsOk(3)
         } else {
@@ -129,9 +140,6 @@ export default function DeliveryForm() {
         }
     };
 
-    const nextStep = () => event => {
-        setStep(prevStep => prevStep + 1)
-    };
     const prevStep = () => {
         setStep(1);
         setIsOk(1);
@@ -143,7 +151,6 @@ export default function DeliveryForm() {
             saveAddress(state.name, state.city, state.address, country, state.zip, state.cardName, state.cardNumber, state.cardDate, state.cvv);
             setStep(3)
         }
-
     });
 
     const deliveryForm = () => {
@@ -166,7 +173,6 @@ export default function DeliveryForm() {
                         onChange={handleChangeData('name')}
 
                     />
-
                     <div style={{marginTop: 38}}>
                         <Typography className={classes.labelSize}>Адрес</Typography>
                         <TextField
@@ -211,7 +217,6 @@ export default function DeliveryForm() {
                                         {option}
                                     </option>
                                 ))}
-
                             </TextField>
                             <TextField
                                 className={classes.inputIndex}
@@ -220,7 +225,6 @@ export default function DeliveryForm() {
                                 placeholder="Индекс"
                                 size="small"
                                 name="ship-zip"
-                                num
                                 required
                                 id="frmZipS"
                                 autoComplete="shipping postal-code"
@@ -258,23 +262,14 @@ export default function DeliveryForm() {
                         autoComplete="cc-name"
                         value={state.cardName}
                         onChange={handleChangeData('cardName')}
-
                     />
-
                     <div style={{marginTop: 23}}>
                         <Typography className={classes.labelSize}>Номер карты</Typography>
                         <MaskedInput
                             required
                             mask={[/\d/, /\d/, /\d/, /\d/, ' ', /\d/, /\d/, /\d/, /\d/, ' ', /\d/, /\d/, /\d/, /\d/, ' ', /\d/, /\d/, /\d/, /\d/]}
                             fullWidth
-                            style={{
-                                height: 17,
-                                borderRadius: 4,
-                                width: 298,
-                                border: '1px solid #c4c4c4',
-                                padding: '10.5px 10.5px',
-                                color: '#a2a2a2',
-                            }}
+                            className={classes.cardNumberInput}
                             error={/\D/.test(state.cardNumber)}
                             variant="outlined"
                             placeholderChar='X'
@@ -291,6 +286,7 @@ export default function DeliveryForm() {
                                 <Typography className={classes.labelSize}>Срок</Typography>
                                 <MaskedInput
                                     mask={[/\d/, /\d/, '/', /\d/, /\d/]}
+                                    className={classes.cardDateInput}
                                     placeholderChar='#'
                                     variant="outlined"
                                     placeholder="Срок"
@@ -300,14 +296,6 @@ export default function DeliveryForm() {
                                     required
                                     autoComplete="cc-exp"
                                     showMask
-                                    style={{
-                                        height: 17,
-                                        width: 72,
-                                        borderRadius: 4,
-                                        border: '1px solid #c4c4c4',
-                                        padding: '10.5px 10.5px',
-                                        color: '#a2a2a2',
-                                    }}
                                     value={state.cardDate}
                                     onChange={handleChangeData('cardDate')}
                                 />
@@ -336,7 +324,7 @@ export default function DeliveryForm() {
                     <Button type="submit"
                             variant="contained"
                             className={classes.continueButton}
-                            disabled={/\d/.test(state.cardName) || state.cvv.length > 4 || state.cardName.length === 0 ||  state.cvv.length === 0}>
+                            disabled={/\d/.test(state.cardName) || state.cvv.length > 4 || state.cardName.length === 0 || state.cvv.length === 0}>
                         Оплатить
                     </Button>
                 </form>
@@ -372,25 +360,24 @@ export default function DeliveryForm() {
 
     return (
         <div className={classes.formContent}>
-            <Breadcrumbs separator={<NavigateNextIcon />}>
+            <Breadcrumbs separator={<NavigateNextIcon/>}>
                 <Button onClick={prevStep} style={{color: step === 1 ? '#101D94' : '#979797'}} variant="text" classes={{
                     root: classes.buttonRoot
                 }}>
                     Доставка
                 </Button>
-                <Button style={{color: step === 2 ? '#101D94' : '#979797'}} onClick={() => setStep(2)} variant="text" classes={{
-                    root: classes.buttonRoot
-                }}>
+                <Button disabled={step === 1 && isOk !== 2} style={{color: step === 2 ? '#101D94' : '#979797'}} onClick={() => setStep(2)} variant="text"
+                        classes={{
+                            root: classes.buttonRoot
+                        }}>
                     Оплата
                 </Button>
             </Breadcrumbs>
-
             {
                 step === 1 ? (deliveryForm()) : (
                     step === 2 ? payForm() : payCheck()
                 )
             }
-
         </div>
     )
 
