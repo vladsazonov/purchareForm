@@ -4,85 +4,8 @@ import {makeStyles} from "@material-ui/styles";
 import {service} from  "../service"
 
 const useStyles = makeStyles({
-    deliveryHeader: {
-        color: '#101D94',
-        fontSize: '19pt',
-        fontFamily: 'Helvetica',
-        fontWeight: 'lighter',
-        marginTop: 40,
-        marginBottom: 30,
-
-    },
-    labelSize: {
-        color: '#101D94',
-        fontSize: '16pt',
-        fontFamily: 'Helvetica',
-        fontWeight: 'lighter',
-    },
-    inputPosition: {
-        marginTop: 10,
-    },
-    inputCountry: {
-        marginTop: 10,
-        width: 180
-    },
-    inputIndex: {
-        marginTop: 10,
-        width: 120
-    },
-    addressBlock: {
-        display: 'flex',
-        justifyContent: 'space-between',
-    },
-    payBlock: {
-        display: 'flex',
-        marginTop: 23,
-    },
-    continueButton: {
-        backgroundColor: '#47B752',
-        height: 45,
-        color: '#fff',
-        marginTop: 30,
-        boxShadow: 'none',
-        width: 180,
-        textTransform: 'none',
-        '&:hover': {
-            backgroundColor: '#4dcf59'
-        },
-    },
-    lol: {
-        position: 'absolute',
-    },
-    kek: {
-        height: 500,
-    },
-    buttonRoot: {
-        textTransform: 'none',
-        padding: 0,
-
-    },
-    formContent: {
-        padding: '22px 40px',
-    },
     blockInfo: {
         margin: '10px 0 10px 25px'
-    },
-    cardNumberInput: {
-        height: 17,
-        borderRadius: 4,
-        width: 298,
-        border: '1px solid #c4c4c4',
-        padding: '10.5px 10.5px',
-        color: '#a2a2a2',
-    },
-    cardDateInput: {
-        fontSize: 16,
-        height: 17,
-        width: 72,
-        borderRadius: 4,
-        border: '1px solid #c4c4c4',
-        padding: '10.5px 10.5px',
-        color: '#a2a2a2',
     },
 });
 

@@ -70,9 +70,6 @@ const useStyles = makeStyles({
     formContent: {
         padding: '22px 40px',
     },
-    blockInfo: {
-        margin: '10px 0 10px 25px'
-    },
     cardNumberInput: {
         height: 17,
         borderRadius: 4,
@@ -110,8 +107,6 @@ export default function DeliveryForm() {
         cvv: '',
     });
 
-    const check = service();
-
     const handleChange = event => {
         setCountry(event.target.value);
     };
@@ -123,20 +118,16 @@ export default function DeliveryForm() {
     const handleSaveAddress = (event) => {
         event.preventDefault();
         if (/\d/.test(state.name) || state.zip.length > 7 || state.name.length === 0 || state.length === 0 || state.address === 0 || state.zip === 0) {
-            console.log('ne verno');
             setIsOk(3)
         } else {
-            console.log('verno');
             setStep(2)
         }
     };
     const handleSavePay = (event) => {
         event.preventDefault();
         if (/\d/.test(state.cardName) || state.cardName.length === 0 || state.cvv.length > 4) {
-            console.log('ne verno');
             setIsOk(3)
         } else {
-            console.log('verno');
             setIsOk(2);
         }
     };
@@ -148,7 +139,6 @@ export default function DeliveryForm() {
 
     useEffect(() => {
         if (isOk === 2 && step === 2) {
-            console.log('useeffect');
             saveAddress(state.name, state.city, state.address, country, state.zip, state.cardName, state.cardNumber, state.cardDate, state.cvv);
             setStep(3)
         }
@@ -341,7 +331,10 @@ export default function DeliveryForm() {
                 }}>
                     Доставка
                 </Button>
-                <Button disabled={step === 1 && isOk !== 2} style={{color: step === 2 ? '#101D94' : '#979797'}} onClick={() => setStep(2)} variant="text"
+                <Button disabled={step === 1 && isOk !== 2} style={{color: step === 2 ? '#101D94' : '#979797'}} onClick={() => {
+                    setIsOk(1);
+                    setStep(2);
+                }} variant="text"
                         classes={{
                             root: classes.buttonRoot
                         }}>
