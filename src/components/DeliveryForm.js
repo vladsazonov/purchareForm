@@ -152,7 +152,7 @@ export default function DeliveryForm() {
                     <Typography className={classes.labelSize}>Получатель</Typography>
                     <TextField
                         fullWidth
-                        error={/\d/.test(state.name)}
+                        error={/[!@#$%^&*()_+.,|?><\d]/.test(state.name)}
                         variant="outlined"
                         placeholder="ФИО"
                         size="small"
