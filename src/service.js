@@ -30,6 +30,4 @@ export const saveAddress = (Name, City, Address, Country, Zip, CardName, CardNum
         cardDate: CardDate,
         cvv: Cvv,
     };
-    console.log(userData);
-
 };
