@@ -14,8 +14,7 @@ import {observable} from "mobx"
 const useStyles = makeStyles({
     deliveryHeader: {
         color: '#101D94',
-        fontSize: '19pt',
-        fontFamily: 'Helvetica',
+        fontSize: '18pt',
         fontWeight: 'lighter',
         marginTop: 40,
         marginBottom: 30,
@@ -24,7 +23,6 @@ const useStyles = makeStyles({
     labelSize: {
         color: '#101D94',
         fontSize: '16pt',
-        fontFamily: 'Helvetica',
         fontWeight: 'lighter',
     },
     inputPosition: {

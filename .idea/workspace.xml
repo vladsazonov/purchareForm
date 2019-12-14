@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="76754bde-db9e-4c13-9849-823f3801760d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/DeliveryForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DeliveryForm.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -77,7 +75,7 @@
       <workItem from="1576161479845" duration="3526000" />
       <workItem from="1576166335352" duration="6715000" />
       <workItem from="1576185193170" duration="6428000" />
-      <workItem from="1576320505913" duration="9769000" />
+      <workItem from="1576320505913" duration="10860000" />
     </task>
     <task id="LOCAL-00001" summary="almost done">
       <created>1576149415123</created>
@@ -177,7 +175,14 @@
       <option name="project" value="LOCAL" />
       <updated>1576323658353</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Some fixes2">
+      <created>1576332324846</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1576332324846</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
