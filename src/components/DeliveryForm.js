@@ -164,6 +164,11 @@ export const DeliveryForm = observer(() => {
         cardDate: '',
         cvv: '',
     }));
+    const M1 = /[0-1]/;
+    const M2 = /[0-9]/;
+    const M3 =  /[1-2]/;
+    const Y = /[0-9]/;
+    const [mask, setMask] = useState(() => observable([M1, M2, "/", Y, Y]));
 
     const handleChange = event => {
         setCountry(event.target.value);
@@ -171,6 +176,11 @@ export const DeliveryForm = observer(() => {
 
     const handleChangeData = name => event => {
         setState({...state, [name]: event.target.value});
+        if (state.cardDate.charAt(0) === '0') {
+            setMask([M1, M2, "/", Y, Y])
+        } else if (state.cardDate.charAt(0) === '1') {
+            setMask([M1, M3, "/", Y, Y])
+        }
     };
 
     const handleSaveAddress = (event) => {
@@ -181,6 +191,7 @@ export const DeliveryForm = observer(() => {
             setStep(2)
         }
     };
+
     const handleSavePay = (event) => {
         event.preventDefault();
         if (/\d/.test(state.cardName) || state.cardName.length === 0 || state.cvv.length > 3) {
@@ -309,10 +320,6 @@ export const DeliveryForm = observer(() => {
     };
 
     const payForm = () => {
-        const M = /[0-1]/;
-        const MM = /[0-9]/;
-        const Y = /[0-9]/;
-        const mask = [M, MM, "/", Y, Y];
 
         return (
             <>
