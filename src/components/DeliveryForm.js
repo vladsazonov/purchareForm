@@ -8,6 +8,8 @@ import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import PaymentCheck from "./PaymentCheck";
 import InputMask from "react-input-mask";
+import {observer} from "mobx-react-lite"
+import {observable} from "mobx"
 
 const useStyles = makeStyles({
     deliveryHeader: {
@@ -77,7 +79,10 @@ const useStyles = makeStyles({
         '&:focus': {
             boxShadow: 'inset 0 0 0 1px rgb(57, 83, 162)',
             border: '1px solid rgb(57, 83, 162)',
-            color: '#000'
+            color: '#000',
+            '&:hover': {
+                border: '1px solid rgb(57, 83, 162)',
+            },
         },
         '&:hover': {
             border: '1px solid #000',
@@ -85,6 +90,20 @@ const useStyles = makeStyles({
         '&::placeholder': {
             color: 'rgb(162, 162, 162)',
             fontSize: 14,
+        },
+    },
+
+    cardNumberError: {
+        border: '1px solid red',
+        '&:focus': {
+            boxShadow: 'inset 0 0 0 1px red',
+            border: '1px solid red',
+            '&:hover': {
+                border: '1px solid red',
+            },
+        },
+        '&:hover': {
+            border: '1px solid red',
         },
     },
     cardDateInput: {
@@ -100,7 +119,10 @@ const useStyles = makeStyles({
         '&:focus': {
             boxShadow: 'inset 0 0 0 1px rgb(57, 83, 162)',
             border: '1px solid rgb(57, 83, 162)',
-            color: '#000'
+            color: '#000',
+            '&:hover': {
+                border: '1px solid rgb(57, 83, 162)',
+            },
         },
         '&::placeholder': {
             color: 'rgb(162, 162, 162)',
@@ -110,16 +132,31 @@ const useStyles = makeStyles({
             border: '1px solid #000',
         },
     },
+    cardDateInputError: {
+        border: '1px solid red',
+        '&:focus': {
+            boxShadow: 'inset 0 0 0 1px red',
+            border: '1px solid red',
+            '&:hover': {
+                border: '1px solid red',
+            },
+        },
+        '&:hover': {
+            border: '1px solid red',
+        },
+    },
 });
 
 const countries = ["Россия", "Украина", "Казахстан"];
 
-export default function DeliveryForm() {
+export const DeliveryForm = observer(() => {
     const classes = useStyles();
     const [country, setCountry] = useState('Россия');
     const [isOk, setIsOk] = useState(1);
     const [step, setStep] = useState(1);
-    const [state, setState] = useState({
+    const [isCardNumberError, setIsCardNumberError] = useState(() => observable.box(false));
+    const [isCardDateError, setIsCardDateError] = useState(() => observable.box(false));
+    const [state, setState] = useState(() => observable({
         name: '',
         city: '',
         address: '',
@@ -128,7 +165,7 @@ export default function DeliveryForm() {
         cardNumber: '',
         cardDate: '',
         cvv: '',
-    });
+    }));
 
     const handleChange = event => {
         setCountry(event.target.value);
@@ -165,7 +202,23 @@ export default function DeliveryForm() {
             saveAddress(state.name, state.city, state.address, country, state.zip, state.cardName, state.cardNumber, state.cardDate, state.cvv);
             setStep(3)
         }
-    });
+    }, [isOk, step, state.name, state.city, state.address, country, state.zip, state.cardName, state.cardNumber, state.cardDate, state.cvv]);
+
+    useEffect(() => {
+        if (state.cardNumber.length < 19 && state.cardNumber.length !== 0) {
+            setIsCardNumberError(true)
+        } else if (state.cardNumber.length === 19 || state.cardNumber.length === 0) {
+            setIsCardNumberError(false)
+        }
+    }, [isCardNumberError, state.cardNumber]);
+
+    useEffect(() => {
+        if (state.cardDate.length < 5 && state.cardDate.length > 0) {
+            setIsCardDateError(true)
+        } else if (state.cardDate.length === 5 || state.cardDate.length === 0) {
+            setIsCardDateError(false)
+        }
+    }, [isCardDateError, state.cardDate]);
 
     const deliveryForm = () => {
         return (
@@ -258,6 +311,11 @@ export default function DeliveryForm() {
     };
 
     const payForm = () => {
+        const M = /[0-1]/;
+        const MM = /[0-9]/;
+        const Y = /[0-9]/;
+        const mask = [M, MM, "/", Y, Y];
+
         return (
             <>
                 <form onSubmit={handleSavePay}>
@@ -265,7 +323,7 @@ export default function DeliveryForm() {
                     <Typography className={classes.labelSize}>Имя на карте</Typography>
                     <TextField
                         fullWidth
-                        error={/[!@#$%^&*()_+,|А-я?><\d]/.test(state.cardName)}
+                        error={/[!@#$%^&*()_+,|А-я/?><\d]/.test(state.cardName)}
                         variant="outlined"
                         placeholder="Konstantin Ivanov"
                         size="small"
@@ -285,21 +343,21 @@ export default function DeliveryForm() {
                                    name="cardnumber"
                                    id="frmCCNum"
                                    autoComplete="cc-number"
-                                   className={classes.cardNumberInput}
+                                   className={isCardNumberError === true ? classes.cardNumberError + ' ' + classes.cardNumberInput : classes.cardNumberInput}
                                    value={state.cardNumber}
                                    onChange={handleChangeData('cardNumber')}
                         />
                         <div className={classes.payBlock}>
                             <div>
                                 <Typography className={classes.labelSize}>Срок</Typography>
-                                <InputMask mask="99/99"
+                                <InputMask mask={mask}
                                            maskPlaceholder={null}
                                            placeholder="MM / YY"
                                            name="cc-exp"
                                            id="frmCCExp"
                                            required
                                            autoComplete="cc-exp"
-                                           className={classes.cardDateInput}
+                                           className={isCardDateError === true ? classes.cardDateInputError + ' ' + classes.cardDateInput : classes.cardDateInput}
                                            value={state.cardDate}
                                            onChange={handleChangeData('cardDate')}
                                 />
@@ -311,8 +369,8 @@ export default function DeliveryForm() {
                                     variant="outlined"
                                     type="password"
                                     size="small"
-                                    num
                                     name="cvc"
+                                    placeholder="•••"
                                     id="frmCCCVC"
                                     required
                                     autoComplete="cc-csc"
@@ -362,5 +420,6 @@ export default function DeliveryForm() {
             }
         </div>
     )
+});
 
-}
+export default DeliveryForm
