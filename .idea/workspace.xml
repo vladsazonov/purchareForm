@@ -76,7 +76,7 @@
       <workItem from="1576161479845" duration="3526000" />
       <workItem from="1576166335352" duration="6715000" />
       <workItem from="1576185193170" duration="6428000" />
-      <workItem from="1576320505913" duration="14159000" />
+      <workItem from="1576320505913" duration="15554000" />
     </task>
     <task id="LOCAL-00001" summary="almost done">
       <created>1576149415123</created>
@@ -190,7 +190,14 @@
       <option name="project" value="LOCAL" />
       <updated>1576333813073</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Fonts fix">
+      <created>1576337010605</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1576337010605</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -154,6 +154,7 @@ export const DeliveryForm = observer(() => {
     const [step, setStep] = useState(1);
     const [isCardNumberError, setIsCardNumberError] = useState(() => observable.box(false));
     const [isCardDateError, setIsCardDateError] = useState(() => observable.box(false));
+    const [isCvvError, setIsCvvError] = useState(() => observable.box(false));
     const [state, setState] = useState(() => observable({
         name: '',
         city: '',
@@ -228,6 +229,14 @@ export const DeliveryForm = observer(() => {
             setIsCardDateError(false)
         }
     }, [isCardDateError, state.cardDate]);
+
+    useEffect(() => {
+        if (state.cvv.length < 3 && state.cvv.length > 0) {
+            setIsCvvError(true)
+        } else if (state.cvv.length === 3 || state.cvv.length === 0) {
+            setIsCvvError(false)
+        }
+    }, [isCvvError, state.cvv]);
 
     const deliveryForm = () => {
         return (
@@ -328,15 +337,15 @@ export const DeliveryForm = observer(() => {
                     <Typography className={classes.labelSize}>Имя на карте</Typography>
                     <TextField
                         fullWidth
-                        error={/[!@#$%^&*()_+,|А-я/?><\d]/.test(state.cardName)}
+                        error={/[!@#$%^\/&*()_+,|А-я/?><\d]/.test(state.cardName)}
                         variant="outlined"
-                        placeholder="Konstantin Ivanov"
+                        placeholder="KONSTANTIN IVANOV"
                         size="small"
                         name="ccname"
                         id="frmNameCC"
                         required
                         autoComplete="cc-name"
-                        value={state.cardName}
+                        value={state.cardName.toLocaleUpperCase()}
                         onChange={handleChangeData('cardName')}
                     />
                     <div style={{marginTop: 23}}>
@@ -369,21 +378,22 @@ export const DeliveryForm = observer(() => {
                             </div>
                             <div style={{marginLeft: 30}}>
                                 <Typography className={classes.labelSize}>CVV</Typography>
-                                <TextField
-                                    error={state.cvv.length > 3 || /\D/.test(state.cvv)}
-                                    variant="outlined"
-                                    type="password"
-                                    size="small"
-                                    name="cvc"
-                                    placeholder="•••"
-                                    id="frmCCCVC"
-                                    required
-                                    autoComplete="cc-csc"
-                                    value={state.cvv}
-                                    style={{
-                                        width: 95,
-                                    }}
-                                    onChange={handleChangeData('cvv')}
+                                <InputMask mask="999"
+                                           maskPlaceholder={null}
+                                           variant="outlined"
+                                           size="small"
+                                           name="cvc"
+                                           placeholder="•••"
+                                           type="password"
+                                           id="frmCCCVC"
+                                           required
+                                           autoComplete="cc-csc"
+                                           style={{
+                                               width: 95,
+                                           }}
+                                           onChange={handleChangeData('cvv')}
+                                           className={isCvvError === true ? classes.cardNumberError + ' ' + classes.cardNumberInput : classes.cardNumberInput}
+                                           value={state.cvv}
                                 />
                             </div>
                         </div>
