@@ -56,12 +56,6 @@ const useStyles = makeStyles({
             backgroundColor: '#4dcf59'
         },
     },
-    lol: {
-        position: 'absolute',
-    },
-    kek: {
-        height: 500,
-    },
     buttonRoot: {
         textTransform: 'none',
         padding: 0,
@@ -271,7 +265,7 @@ export default function DeliveryForm() {
                     <Typography className={classes.labelSize}>Имя на карте</Typography>
                     <TextField
                         fullWidth
-                        error={/[!@#$%^&*()_+.,|А-я?><\d]/.test(state.cardName)}
+                        error={/[!@#$%^&*()_+,|А-я?><\d]/.test(state.cardName)}
                         variant="outlined"
                         placeholder="Konstantin Ivanov"
                         size="small"
@@ -350,10 +344,11 @@ export default function DeliveryForm() {
                 }}>
                     Доставка
                 </Button>
-                <Button disabled={step === 1 && isOk !== 2} style={{color: step === 2 ? '#101D94' : '#979797'}} onClick={() => {
-                    setIsOk(1);
-                    setStep(2);
-                }} variant="text"
+                <Button disabled={step === 1 && isOk !== 2} style={{color: step === 2 ? '#101D94' : '#979797'}}
+                        onClick={() => {
+                            setIsOk(1);
+                            setStep(2);
+                        }} variant="text"
                         classes={{
                             root: classes.buttonRoot
                         }}>
