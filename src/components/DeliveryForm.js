@@ -304,7 +304,7 @@ export const DeliveryForm = observer(() => {
                             </TextField>
                             <TextField
                                 className={classes.inputIndex}
-                                error={state.zip.length > 7}
+                                error={state.zip.length > 6 || /[!@#$%^&*()_+~`"№;:.,/|?><[\D]/.test(state.zip)}
                                 variant="outlined"
                                 placeholder="Индекс"
                                 size="small"
@@ -320,7 +320,7 @@ export const DeliveryForm = observer(() => {
                     <Button type="submit"
                             variant="contained"
                             className={classes.continueButton}
-                            disabled={/[!@#$%^&*()_+~`"№;:.,/|?>[<\d]/.test(state.name) || state.zip.length > 7 || state.name.length === 0 || state.city.length === 0 || state.address.length === 0 || state.zip.length === 0}>
+                            disabled={/[!@#$%^&*()_+~`"№;:.,/|?>[<\d]/.test(state.name) || state.zip.length > 6 || state.zip.length < 5 || state.name.length === 0 || state.city.length === 0 || state.address.length === 0 || state.zip.length === 0 || /[!@#$%^&*()_+~`"№;:.,/|?><[\D]/.test(state.zip)}>
                         Продолжить
                     </Button>
                 </form>

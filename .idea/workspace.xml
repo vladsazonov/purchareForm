@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="76754bde-db9e-4c13-9849-823f3801760d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/service.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/DeliveryForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DeliveryForm.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -74,7 +76,8 @@
       <workItem from="1576161479845" duration="3526000" />
       <workItem from="1576166335352" duration="6715000" />
       <workItem from="1576185193170" duration="6428000" />
-      <workItem from="1576320505913" duration="15794000" />
+      <workItem from="1576320505913" duration="16469000" />
+      <workItem from="1576412802771" duration="504000" />
     </task>
     <task id="LOCAL-00001" summary="almost done">
       <created>1576149415123</created>
@@ -202,7 +205,14 @@
       <option name="project" value="LOCAL" />
       <updated>1576338400706</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Fonts fix">
+      <created>1576338624447</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1576338624447</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
