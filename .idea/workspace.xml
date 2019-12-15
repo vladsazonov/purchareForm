@@ -77,7 +77,7 @@
       <workItem from="1576166335352" duration="6715000" />
       <workItem from="1576185193170" duration="6428000" />
       <workItem from="1576320505913" duration="16469000" />
-      <workItem from="1576412802771" duration="504000" />
+      <workItem from="1576412802771" duration="1306000" />
     </task>
     <task id="LOCAL-00001" summary="almost done">
       <created>1576149415123</created>
@@ -212,7 +212,14 @@
       <option name="project" value="LOCAL" />
       <updated>1576338624447</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="zip input fix">
+      <created>1576413456442</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1576413456442</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -240,6 +247,7 @@
     <MESSAGE value="Some fixes1" />
     <MESSAGE value="Some fixes2" />
     <MESSAGE value="Fonts fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fonts fix" />
+    <MESSAGE value="zip input fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="zip input fix" />
   </component>
 </project>

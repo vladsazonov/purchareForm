@@ -401,7 +401,7 @@ export const DeliveryForm = observer(() => {
                     <Button type="submit"
                             variant="contained"
                             className={classes.continueButton}
-                            disabled={/[!@#$%^&*()_+.,|?><\dА-я]/.test(state.cardName) || state.cvv.length > 3 || state.cardName.length === 0 || state.cvv.length === 0 || /\D/.test(state.cvv) || state.cardNumber.length < 19 || state.cardDate.length < 5 || state.cardDate.length === 0}>
+                            disabled={/[!@#$%^&*()_+,|?><\dА-я]/.test(state.cardName) || state.cvv.length > 3 || state.cardName.length === 0 || state.cvv.length === 0 || /\D/.test(state.cvv) || state.cardNumber.length < 19 || state.cardDate.length < 5 || state.cardDate.length === 0}>
                         Оплатить
                     </Button>
                 </form>
